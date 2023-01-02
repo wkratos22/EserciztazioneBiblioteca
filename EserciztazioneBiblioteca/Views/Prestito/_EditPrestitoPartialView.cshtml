@@ -1,0 +1,51 @@
+﻿@model EserciztazioneBiblioteca.Models.Prestito
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="modal fade" id="editModal-@Model.Id" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Id" />
+                        <label asp-for="Data_inizio" class="control-label"></label>
+                        <input asp-for="Data_inizio" class="form-control" />
+                        <span asp-validation-for="Data_inizio" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Data_fine" class="control-label"></label>
+                        <input asp-for="Data_fine" class="form-control" />
+                        <span asp-validation-for="Data_fine" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Clienti" class="control-label"></label>
+                        <input asp-for="Clienti" class="form-control" />
+                        <span asp-validation-for="Clienti" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descrizione" class="control-label"></label>
+                        <input asp-for="Descrizione" class="form-control" />
+                        <span asp-validation-for="Descrizione" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Prezzo" class="control-label"></label>
+                        <input asp-for="Prezzo" class="form-control" />
+                        <span asp-validation-for="Prezzo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

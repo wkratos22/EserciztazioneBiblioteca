@@ -1,0 +1,159 @@
+﻿@model IEnumerable<EserciztazioneBiblioteca.Models.Prestito>
+
+@{
+    ViewData["Title"] = "Index";
+    string example = ViewBag.Example;
+}
+
+<h1>Index</h1>
+
+<p>
+    @example
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create New
+    </button>
+
+</p>
+
+
+
+<table id="prestitoTable" class="display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_inizio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_fine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clienti)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data_inizio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data_fine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clienti.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descrizione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezzo)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Data Inizio</label>
+                    <input type="date" class="form-control" aria-describedby="emailHelp" id="dataInzio">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Data Fine</label>
+                    <input type="date" class="form-control" id="dataFine">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descrizione</label>
+                    <input type="text" class="form-control" id="descrizione">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Prezzo</label>
+                    <input type="number" class="form-control" id="prezzo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Cliente</label>
+                    <select class="form-control" asp-items="ViewBag.Clienti" id="cliente">
+                        <option value="">Select one Customer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="salva">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" style="opacity: 1!important; margin-top:6%;" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <input type="hidden" id="Id"></input>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="Data_inizio" class="form-label">Data Inizio</label>
+                    <input type="date" class="form-control" aria-describedby="emailHelp" id="Data_inizio">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Data Fine</label>
+                    <input type="date" class="form-control" id="Data_fine">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descrizione</label>
+                    <input type="text" class="form-control" id="Descrizione">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Prezzo</label>
+                    <input type="number" class="form-control" id="Prezzo">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Cliente</label>
+                    <select class="form-control" asp-items="ViewBag.Clienti" id="clienteEdit">
+                        <option value="0">Select one Customer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="Edit">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/PrestitoIndex.js" asp-append-version="true" defer type="text/javascript"></script>

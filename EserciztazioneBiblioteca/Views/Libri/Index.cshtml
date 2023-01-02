@@ -1,0 +1,101 @@
+﻿@model IEnumerable<EserciztazioneBiblioteca.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<table id="example" class="display">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titolo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anno_di_pubblicazione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lingua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.casa_Editrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prestiti.Data_inizio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prestiti.Data_fine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titolo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anno_di_pubblicazione)
+                </td>
+                <td>
+                    @item.Prezzo €
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lingua)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Formato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isbn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genere.Descrizione)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autore.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.casa_Editrice.nome_editore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prestiti.Data_inizio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prestiti.Data_fine)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

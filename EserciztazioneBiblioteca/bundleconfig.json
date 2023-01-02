@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "wwwroot/js/PrestitoIndex.min.js",
+    "inputFiles": [
+      "wwwroot/js/PrestitoIndex.js"
+    ]
+  }
+]
